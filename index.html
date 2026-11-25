@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusCare | College Complaint System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">CC</div>
+      <div><strong>CampusCare</strong><span>College Helpdesk Portal</span></div>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="studentView">Student Portal</button>
+      <button class="nav-btn" data-view="adminView">Admin Dashboard</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="kicker">YOUR CAMPUS, YOUR VOICE</p>
+        <h1>Make your campus<br><span>better together.</span></h1>
+        <p>Report an issue, follow its progress, and help us improve your college experience.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="art-building">🏫</div><div class="art-bubble">We’re listening!</div></div>
+    </section>
+
+    <section id="studentView" class="view">
+      <div class="section-title"><div><p class="kicker">STUDENT SERVICES</p><h2>Submit a complaint</h2></div><span class="pill">Student Portal</span></div>
+      <div class="student-grid">
+        <section class="card">
+          <form id="complaintForm">
+            <label for="studentName">Your name</label>
+            <input id="studentName" type="text" placeholder="Enter your full name" maxlength="60" required>
+            <div class="two-col">
+              <div><label for="studentId">Student / Roll number</label><input id="studentId" type="text" placeholder="e.g. 24BCA012" maxlength="24" required></div>
+              <div><label for="category">Complaint category</label>
+                <select id="category" required>
+                  <option value="">Select category</option>
+                  <option>Classroom</option><option>Computer Lab</option><option>Electricity</option>
+                  <option>Water Supply</option><option>Cleanliness</option><option>Library</option><option>Other</option>
+                </select>
+              </div>
+            </div>
+            <label for="location">Location / Department</label>
+            <input id="location" type="text" placeholder="e.g. Block B, Room 204" maxlength="80" required>
+            <label for="description">Complaint details</label>
+            <textarea id="description" rows="5" placeholder="Explain the issue clearly..." maxlength="500" required></textarea>
+            <button class="primary" type="submit">Submit complaint <span>→</span></button>
+            <p class="fine-print">Demo project: complaint information is saved in this browser only.</p>
+          </form>
+          <div id="successBox" class="success-box" hidden></div>
+        </section>
+
+        <aside class="side-column">
+          <section class="card track-card">
+            <p class="kicker">CHECK AN UPDATE</p><h3>Track your complaint</h3>
+            <p class="muted">Enter the complaint ID you received after submitting.</p>
+            <form id="trackForm" class="track-form">
+              <input id="trackId" type="text" placeholder="e.g. CC-123456" required>
+              <button class="primary" type="submit">Track</button>
+            </form>
+            <div id="trackResult" class="track-result" aria-live="polite"></div>
+          </section>
+          <section class="info-card"><div class="info-icon">💡</div><div><h3>Helpful tip</h3><p>Include the exact location and a clear description so the college team can resolve your issue faster.</p></div></section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="adminView" class="view" hidden>
+      <div class="section-title"><div><p class="kicker">COLLEGE MANAGEMENT</p><h2>Complaint dashboard</h2></div><span class="pill admin-pill">Demo Admin View</span></div>
+      <div class="stats">
+        <article class="stat"><span>Total complaints</span><strong id="total">0</strong></article>
+        <article class="stat"><span>Pending</span><strong id="pending">0</strong></article>
+        <article class="stat"><span>In progress</span><strong id="progress">0</strong></article>
+        <article class="stat"><span>Resolved</span><strong id="resolved">0</strong></article>
+      </div>
+      <section class="card table-card">
+        <div class="table-head"><div><h3>All complaints</h3><p class="muted">Review reports and update their status.</p></div>
+          <select id="adminFilter" aria-label="Filter complaints"><option value="All">All statuses</option><option>Pending</option><option>In Progress</option><option>Resolved</option></select>
+        </div>
+        <div id="adminList" class="complaint-list"></div>
+        <p id="adminEmpty" class="empty" hidden>No complaints found. Submit one from the Student Portal.</p>
+      </section>
+    </section>
+  </main>
+  <footer>CampusCare · A student minor project built with HTML, CSS & JavaScript</footer>
+  <script src="script.js"></script>
+</body>
+</html>
